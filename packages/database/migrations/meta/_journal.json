@@ -1351,6 +1351,13 @@
       "when": 1793201098555,
       "tag": "0192_user_favorites",
       "breakpoints": true
+    },
+    {
+      "idx": 193,
+      "version": "7",
+      "when": 1793204839498,
+      "tag": "0193_memory_structure_device_pins_shares",
+      "breakpoints": true
     }
   ],
   "version": "6"
