@@ -589,6 +589,8 @@ export default {
   'creds.edit.title': 'Edit Credential',
   'creds.empty': 'No credentials configured yet',
   'creds.errors.createFailed': 'Failed to create the credential. Please try again.',
+  'creds.errors.multiOrgShareDisabled':
+    'Sharing one credential into several workspaces is not available yet. Remove its other share first.',
   'creds.errors.privateCredExists':
     'You already have a private credential with this key in this workspace. Remove it before making this one private.',
   'creds.errors.privateCredsDisabled':

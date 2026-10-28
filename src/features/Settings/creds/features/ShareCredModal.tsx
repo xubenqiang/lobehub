@@ -23,6 +23,8 @@ import { useWorkspaceOptionLabel } from '@/business/client/hooks/useWorkspaceOpt
 import { useWorkspaces } from '@/business/client/hooks/useWorkspaces';
 import { createWorkspaceLambdaClient, lambdaQuery } from '@/libs/trpc/client';
 
+import { credErrorKey } from './credError';
+
 type Visibility = 'private' | 'public';
 
 const styles = stylex.create({
@@ -153,8 +155,8 @@ const ShareCredContent = memo<ShareCredContentProps>(({ credId }) => {
       await refetch();
       setTargetId(undefined);
       toast.success(tSetting('creds.share.success', { name: target.name }));
-    } catch {
-      toast.error(tSetting('creds.share.error'));
+    } catch (error) {
+      toast.error(tSetting(credErrorKey(error, 'creds.share.error')));
     } finally {
       setSharing(false);
     }
@@ -171,8 +173,8 @@ const ShareCredContent = memo<ShareCredContentProps>(({ credId }) => {
             id: credId,
           });
           await refetch();
-        } catch {
-          toast.error(tSetting('creds.share.error'));
+        } catch (error) {
+          toast.error(tSetting(credErrorKey(error, 'creds.share.error')));
         }
       },
       title: tSetting('creds.share.revokeConfirmTitle', { name }),

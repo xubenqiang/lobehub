@@ -1,10 +1,11 @@
 /**
  * Market's 409 reasons, passed through as the tRPC message by
  * `workspaceCreds`: the target slot for this key (the workspace's shared one,
- * or the caller's private one) is taken, or private workspace credentials are
- * not enabled on Market yet.
+ * or the caller's private one) is taken, or Market does not yet allow private
+ * workspace credentials or sharing one credential into several workspaces.
  */
 const CONFLICT_KEYS = {
+  multi_org_share_disabled: 'creds.errors.multiOrgShareDisabled',
   private_cred_exists: 'creds.errors.privateCredExists',
   private_creds_disabled: 'creds.errors.privateCredsDisabled',
   public_cred_exists: 'creds.errors.publicCredExists',

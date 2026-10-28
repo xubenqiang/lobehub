@@ -10,6 +10,9 @@ describe('credErrorKey', () => {
     expect(credErrorKey(trpcError('CONFLICT', 'public_cred_exists'), 'fallback')).toBe(
       'creds.errors.publicCredExists',
     );
+    expect(credErrorKey(trpcError('CONFLICT', 'multi_org_share_disabled'), 'fallback')).toBe(
+      'creds.errors.multiOrgShareDisabled',
+    );
     expect(credErrorKey(trpcError('CONFLICT', 'private_cred_exists'), 'fallback')).toBe(
       'creds.errors.privateCredExists',
     );

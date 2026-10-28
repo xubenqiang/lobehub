@@ -312,6 +312,7 @@
   "creds.edit.title": "编辑凭证",
   "creds.empty": "暂无凭证配置",
   "creds.errors.createFailed": "创建凭证失败，请重试。",
+  "creds.errors.multiOrgShareDisabled": "暂不支持把同一个凭证共享到多个工作区，请先取消它在其他工作区的共享。",
   "creds.errors.privateCredExists": "你在此工作区已有同一键名的私人凭证，请先移除它再将此凭证设为私人。",
   "creds.errors.privateCredsDisabled": "工作区私人凭证暂未开放，请稍后再试。",
   "creds.errors.publicCredExists": "此工作区已有同一键名的共享凭证，请先移除它再发布此凭证。",

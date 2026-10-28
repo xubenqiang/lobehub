@@ -15,6 +15,7 @@ const MARKET_STATUS_TO_TRPC_CODE: Record<number, TRPCError['code']> = {
   400: 'BAD_REQUEST',
   403: 'FORBIDDEN',
   404: 'NOT_FOUND',
+  409: 'CONFLICT',
 };
 
 /**
