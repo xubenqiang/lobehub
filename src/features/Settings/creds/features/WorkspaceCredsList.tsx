@@ -14,6 +14,7 @@ import { useMarketAuth } from '@/layout/AuthProvider/MarketAuth';
 import { lambdaClient } from '@/libs/trpc/client';
 
 import { isOwnCredRow, workspaceCredRowAccess } from './credAccess';
+import { credErrorKey } from './credError';
 import CredItem from './CredItem';
 import { createEditCredModal } from './EditCredModal';
 import { type CredsApi } from './useCredsApi';
@@ -49,8 +50,8 @@ const WorkspaceCredsList: FC<WorkspaceCredsListProps> = ({ credsApi, visibility 
     try {
       await action();
       await refetch();
-    } catch {
-      toast.error(t('creds.share.error'));
+    } catch (error) {
+      toast.error(t(credErrorKey(error, 'creds.share.error')));
     }
   };
 

@@ -588,6 +588,11 @@ export default {
   'creds.createModal.title': 'Create Credential',
   'creds.edit.title': 'Edit Credential',
   'creds.empty': 'No credentials configured yet',
+  'creds.errors.createFailed': 'Failed to create the credential. Please try again.',
+  'creds.errors.privateCredsDisabled':
+    'Private workspace credentials are not available yet. Please try again later.',
+  'creds.errors.publicCredExists':
+    'This workspace already shares a credential with this key. Remove it before publishing this one.',
   'creds.file.authRequired': 'Please sign in to the Market first',
   'creds.file.uploadFailed': 'File upload failed',
   'creds.file.uploadSuccess': 'File uploaded successfully',
