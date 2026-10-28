@@ -88,6 +88,18 @@ export class AcceptanceModel {
     buildWorkspaceWhere({ userId: this.userId, workspaceId: this.workspaceId }, acceptances);
 
   /**
+   * What the list reads in the active scope. Wider than {@link ownership} in a
+   * workspace: a `private` workspace acceptance is member-gated, not
+   * creator-only — every member can open it (`resolveAcceptanceCommentAccess`),
+   * so the list must show it too. Writes keep using `ownership`.
+   */
+  private listScope = () =>
+    buildWorkspaceWhere(
+      { userId: this.userId, workspaceId: this.workspaceId },
+      { userId: acceptances.userId, workspaceId: acceptances.workspaceId },
+    );
+
+  /**
    * Acceptances the caller has spoken on — a remark or an approval, replies
    * included; a bare emoji reaction is not taking part. Rows the caller can no
    * longer read (made private, or they left its workspace) drop out: the link
@@ -167,7 +179,7 @@ export class AcceptanceModel {
     const conditions: SQL[] = [];
     if (scope === 'participated') conditions.push(this.participation());
     else {
-      conditions.push(this.ownership());
+      conditions.push(this.listScope());
       if (scope === 'created') conditions.push(eq(acceptances.userId, this.userId));
     }
     if (projectId === null) conditions.push(isNull(acceptances.projectId));
