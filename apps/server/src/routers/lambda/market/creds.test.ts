@@ -255,7 +255,9 @@ describe('credsRouter share/publish/unshare', () => {
 
     const result = await caller.publish({ id: 42 });
 
-    expect(mockPersonalCredsPublish).toHaveBeenCalledWith(42, { orgId: 'workspace:workspace-1' });
+    expect(mockPersonalCredsPublish).toHaveBeenCalledWith(42, undefined, {
+      orgId: 'workspace:workspace-1',
+    });
     expect(result).toEqual({ id: 42, visibility: 'public' });
   });
 
@@ -270,7 +272,9 @@ describe('credsRouter share/publish/unshare', () => {
 
     const result = await caller.unshare({ id: 42 });
 
-    expect(mockPersonalCredsUnshare).toHaveBeenCalledWith(42, { orgId: 'workspace:workspace-1' });
+    expect(mockPersonalCredsUnshare).toHaveBeenCalledWith(42, undefined, {
+      orgId: 'workspace:workspace-1',
+    });
     expect(result).toEqual({ id: 42, visibility: 'private' });
   });
 

@@ -284,7 +284,11 @@ export const credsRouter = router({
   publish: credsProcedure.input(z.object({ id: z.number() })).mutation(async ({ ctx, input }) => {
     log('publish input: id=%d', input.id);
     try {
-      const result = await ctx.marketService.market.creds.publish(input.id, shareTarget(ctx));
+      const result = await ctx.marketService.market.creds.publish(
+        input.id,
+        undefined,
+        shareTarget(ctx),
+      );
       log('publish success: id=%d', result.id);
       return result;
     } catch (error) {
@@ -332,7 +336,11 @@ export const credsRouter = router({
   unshare: credsProcedure.input(z.object({ id: z.number() })).mutation(async ({ ctx, input }) => {
     log('unshare input: id=%d', input.id);
     try {
-      const result = await ctx.marketService.market.creds.unshare(input.id, shareTarget(ctx));
+      const result = await ctx.marketService.market.creds.unshare(
+        input.id,
+        undefined,
+        shareTarget(ctx),
+      );
       log('unshare success: id=%d', result.id);
       return result;
     } catch (error) {
